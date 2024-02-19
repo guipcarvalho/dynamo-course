@@ -1,0 +1,16 @@
+{
+  "name": "dynamodb-examples",
+  "version": "1.0.0",
+  "description": "Working with DynamoDb",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "insert": "node insert.js",
+    "test": "jasmine"
+  },
+  "author": "Guilherme Carvalho",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.1560.0"
+  }
+}
