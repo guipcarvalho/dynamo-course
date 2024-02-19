@@ -11,11 +11,11 @@ const dynamoDb = new AWS.DynamoDB();
 const params = {
   TableName: "BaseballStats",
   KeySchema: [
-    { AttributeName: "TeamId", KeyType: "HASH" },
+    { AttributeName: "TeamID", KeyType: "HASH" },
     { AttributeName: "SK", KeyType: "RANGE" },
   ],
   AttributeDefinitions: [
-    { AttributeName: "TeamId", AttributeType: "S" },
+    { AttributeName: "TeamID", AttributeType: "S" },
     { AttributeName: "SK", AttributeType: "S" },
   ],
   ProvisionedThroughput: {
