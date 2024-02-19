@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "insert": "node insert.js",
+    "insert-transaction": "node insert-transaction.js",
     "test": "jasmine"
   },
   "author": "Guilherme Carvalho",

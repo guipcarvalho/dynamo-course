@@ -22,26 +22,23 @@ putItems(teams)
   .catch((err) => console.error("Insert failed", err));
 
 function putItems(items) {
-  let insertedCount = 0;
-
   return new Promise((resolve, reject) => {
-    items.forEach((item) => {
-      const params = {
-        TableName: tableName,
-        Item: item,
-      };
+    const params = {
+      TransactItems: items.map((item) => ({
+        Put: {
+          TableName: tableName,
+          Item: item,
+        },
+      })),
+    };
 
-      dynamoDb.putItem(params, (err, data) => {
-        if (err) {
-          reject(err);
-        } else {
-          insertedCount++;
-          if (insertedCount === items.length) {
-            console.log(`Inserted ${insertedCount} items`);
-            resolve();
-          }
-        }
-      });
+    dynamoDb.transactWriteItems(params, (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        console.log(`Inserted ${items.length} items`);
+        resolve();
+      }
     });
   });
 }
